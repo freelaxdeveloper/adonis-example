@@ -1,0 +1,27 @@
+@layout('layout')
+
+@section('content')
+
+  <form action="{{ route('users.store') }}" method="POST">
+    {{ csrfField() }}
+
+    Email:
+    <input name="email" value="{{ old('email') }}" />
+    {{ elIf('<span class="err">$self</span>', getErrorFor('email'), hasErrorFor('email')) }}
+    <br/><br/>
+    Username:
+    <input name="username" value="{{ old('username') }}" />
+    {{ elIf('<span class="err">$self</span>', getErrorFor('username'), hasErrorFor('username')) }}
+    <br/><br/>
+    Password:
+    <input name="password" value="{{ old('username') }}" />
+    {{ elIf('<span class="err">$self</span>', getErrorFor('password'), hasErrorFor('password')) }}
+    <br/><br/>
+
+    <br/>
+    <button type="submit" name="save">Create</button>
+  </form>
+
+  <hr/>
+  <a href="{{ route('users.index') }}">&laquo; Back</a>
+@endsection

@@ -1,0 +1,19 @@
+@layout('layout')
+
+@section('content')
+  <h3>Users list!</h3>
+
+  @each(user in users)
+    - {{ user.username }}
+    <a href="{{ route('users.edit', {id : user.id}) }}">[edit]</a>
+    <a href="{{ route('users.show', {id : user.id}) }}">[show]</a>
+    <a href="{{ route('users.destroy_get', {id : user.id}) }}">[del]</a>
+    <br/>
+   @else
+    <h4> No users found </h4>
+   @endeach
+
+  <hr/>
+   &raquo; <a href="{{ route('users.create') }}">Create</a>
+
+@endsection

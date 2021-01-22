@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {{ style('my') }}
+  </head>
+  <body>
+    <header class="header">
+    </header>
+
+    <div class="container">
+      <div class="auth">
+        @loggedIn
+           <h2> Hello {{ auth.user.username }} <a href="{{ route('auth.logout') }}">[exit]</a></h2>
+         @else
+           <p> <a href="{{ route('login') }}">Please login</a> </p>
+         @endloggedIn
+      </div>
+
+
+      <aside class="sidebar">
+        @section('sidebar')
+
+          @if(flashMessage('error'))
+            <div class="notify err">
+              <b>Error:</b> <span>{{ flashMessage('error') }}</span>
+            </div>
+          @endif
+
+          @if(flashMessage('message'))
+            <div class="notify msg">
+              <b>Message:</b> <span>{{ flashMessage('message') }}</span>
+            </div>
+          @endif
+
+        @endsection
+      </aside>
+
+      <div class="content">
+        @!section('content')
+      </div>
+    </div>
+  </body>
+</html>

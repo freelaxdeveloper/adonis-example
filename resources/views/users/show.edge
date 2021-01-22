@@ -1,0 +1,9 @@
+@layout('layout')
+
+@section('content')
+  <b>ID:</b> {{ user.id }}<br/>
+  <b>Username:</b> {{ user.username }}<br/>
+  <b>Email:</b> {{ user.email }}<br/>
+  <hr/>
+  <a href="{{ route('users.index') }}">&laquo; Back</a>
+@endsection
